@@ -132,7 +132,6 @@ USBDevice* USBDevice::Unmarshalling(Parcel &data)
     if (!deviceData) {
         EDM_LOGE(MODULE_DEV_MGR, "failed to unmarshal base DeviceData");
         delete usbDevice;
-        delete deviceData;
         return nullptr;
     }
 
@@ -296,7 +295,6 @@ USBDeviceInfoData* USBDeviceInfoData::Unmarshalling(Parcel &data)
     if (!deviceInfoData) {
         EDM_LOGE(MODULE_DEV_MGR, "failed to unmarshal base deviceInfoData");
         delete usbDeviceInfo;
-        delete deviceInfoData;
         return nullptr;
     }
     usbDeviceInfo->deviceId = deviceInfoData->deviceId;
