@@ -1,0 +1,56 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "material": {
+          "certpath": "C:/Users/lenovo/.ohos/config/openharmony/default_scsiperipheral-demo_upSQgmy6rQKH9ApJFeu8CNykTAY5q8wcF9FN36hV0Ho=.cer",
+          "storePassword": "0000001BF8E51AA36DA80D2068A118601BF811634CED04DAABEC49D3714602A28B87B69689B13AE2791BAB",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BC75FEA6BB93814C80379A737C295F6484A2B69CBC824C8906BA2E1E1DACB4278714AF8AAB3646C",
+          "profile": "C:/Users/lenovo/.ohos/config/openharmony/default_scsiperipheral-demo_upSQgmy6rQKH9ApJFeu8CNykTAY5q8wcF9FN36hV0Ho=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:/Users/lenovo/.ohos/config/openharmony/default_scsiperipheral-demo_upSQgmy6rQKH9ApJFeu8CNykTAY5q8wcF9FN36hV0Ho=.p12"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compileSdkVersion": 16,
+        "compatibleSdkVersion": 16,
+        "targetSdkVersion": 16,
+        "runtimeOS": "OpenHarmony",
+        "buildOption": {
+          "strictMode": {
+            "caseSensitiveCheck": true,
+            "useNormalizedOHMUrl": true
+          }
+        }
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}
