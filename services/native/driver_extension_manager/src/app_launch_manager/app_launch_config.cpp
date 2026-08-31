@@ -14,6 +14,7 @@
  */
 
 #include "app_launch_config.h"
+#include "parse_hex_uint16.h"
 
 #include <cJSON.h>
 #include <cerrno>
@@ -270,22 +271,20 @@ bool AppLaunchConfig::ParseDeviceItemTo(cJSON *deviceItem,
         return false;
     }
 
-    errno = 0;
-    unsigned long vidVal = std::strtoul(vidObj->valuestring, nullptr, 16);
-    if (errno != 0 || vidVal > UINT16_MAX) {
+    uint16_t vidVal = 0;
+    if (!ParseHexUint16(vidObj->valuestring, vidVal)) {
         EDM_LOGE(MODULE_BUS_USB, "vid value invalid: %{public}s", vidObj->valuestring);
         return false;
     }
-    errno = 0;
-    unsigned long pidVal = std::strtoul(pidObj->valuestring, nullptr, 16);
-    if (errno != 0 || pidVal > UINT16_MAX) {
+    uint16_t pidVal = 0;
+    if (!ParseHexUint16(pidObj->valuestring, pidVal)) {
         EDM_LOGE(MODULE_BUS_USB, "pid value invalid: %{public}s", pidObj->valuestring);
         return false;
     }
 
     AppLaunchEntry entry;
-    entry.vid = static_cast<uint16_t>(vidVal);
-    entry.pid = static_cast<uint16_t>(pidVal);
+    entry.vid = vidVal;
+    entry.pid = pidVal;
 
     if (!ParseStringField(deviceItem, "bundleName", entry.bundleName) ||
         !ParseStringField(deviceItem, "abilityName", entry.abilityName) ||
